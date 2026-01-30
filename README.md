@@ -1,4 +1,4 @@
-<strong><p style="font-size: 34px;"Introduction</strong></p>
+<strong>Introduction</strong>
 <br></br>
 The Nuclear Plant Public Alert System (PAS) is designed to provide timely and reliable emergency notifications to the
 public within a designated Emergency Planning Zone (EPZ). For the system to maintain public trust, it must be secure 
@@ -6,7 +6,7 @@ and accurate, minimizing the risk of false alarms. This project implements condi
 ensuring that notifications are only sent after multi-layered verification. By doing so, the system supports safe 
 operation, effective training exercises, and confidence in emergency communications.
 
-<strong><p style="font-size: 34px;"Project Overview</strong></p>
+<strong>Project Overview</strong>
 <br></br>
 This project focuses on improving the security and reliability of the PAS by introducing safeguards that prevent 
 accidental or false alerts. The system allows authorized personnel to conduct training exercises without triggering 
