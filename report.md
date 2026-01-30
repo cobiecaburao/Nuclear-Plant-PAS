@@ -85,15 +85,30 @@ Nuclear Plant PAS need to be secure and reliable for the public to trust and pro
 <!-- This section has the following three subsections: -->
 
 ### Functions
+<ul>
+  <li>Send immediate digital alerts to the public within the Emergency Planning Zone (EPZ).</li>
+  <li>Allow training exercises without triggerign actual public alerts.</li>
+  <li>Log all alert attempts and actions fro auditing and accountability.</li>
+</ul>
 
 <!-- - Provide functions of the design project. Remember that the functions contain verbs. -->
 
 ### Objectives
-
+<ul>
+  <li>Minimize human error during the operation of PAS.</li>
+  <li>Prevent false alarms to maintain public trust and credibility.</li>
+  <li>Ensure alerts are sent quickly, accurately, and reliably during real emergencies.</li>
+  <li>Provide safe and realistic training for PAS operators.</li>
+</ul>
 <!-- - Provide objectives of the design project. Remember that the objectives are specified as adjectives. -->
 
 ### Constraints
-
+<ul>
+  <li>**Regulatory Compliance (Security and Access):** Only authorized personnel can trigger live alerts, and the system must follow nuclear safety regulations.</li>
+  <li>**Reliability:** PAS must operate continuously and accurately, even during network or power failures.</li>
+  <li>**Economic Factors:** The system must balance security and functionality with cost-effectiveness.</li>
+  <li>**Societal Impacts:** Alerts must avoid unnecessary panic and maintain public confidence in emergency communications.</li>
+</ul>
 <!-- - Provide constraints here. Remember that the constraints are binary (either satisfied or not). -->
 
 # Solution
