@@ -137,10 +137,12 @@ Nuclear Plant PAS need to be secure and reliable for the public to trust and pro
 
 <!-- This is an improved solution but might not be the final solution that you select. Give a brief description of this solution here. Again focus on its testing attributes. -->
 ### Specification-based Testing
-- Boundary Value Aanalysis: temperature sensor, radiation sensor
-- Equivalence Class Test: 
-- Decision Table Test: 
-- State Transition Test: 
+- Boundary Value Aanalysis: temperature sensor, radiation sensor, pressure sensor, flow sensor, level sensor, vibration sensor
+- Equivalence Class Test: arming sequence code, Shutdown idk
+- Decision Table Test:
+  Condition Stubs: lockdown active, shutdown active, system health, manual override
+  Action Stubs: Test mode, Live mode
+- State Transition Test: Finite State Machine
 - Use Case Test: 
 
 ## Final Solution
