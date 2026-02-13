@@ -124,6 +124,7 @@ Nuclear Plant PAS need to be secure and reliable for the public to trust and pro
 <!-- In this section, you will provide an account of some solutions your team brainstormed to implement and test the project. Some solutions might not have all the desired features, some might not satisfy the constraints, or both. These solutions come up in your mind while you brainstorm ways of implementing all the features while meeting the constraints. Towards, the end you select a solution that you think has all the features, testable and satisfies all the constraints. Remember that an engineering design is iterative in nature! -->
 
 ## Solution 1
+<img width="6120" height="8160" alt="image" src="https://github.com/user-attachments/assets/55248bc8-ef95-44f3-87d0-96d0ce133f98" />
 
 <!-- Write a brief description of your first solution and provide the reasons in terms of testing for not selecting this one. -->
 - sensor class
@@ -134,6 +135,7 @@ Nuclear Plant PAS need to be secure and reliable for the public to trust and pro
 - systemHealth class
 
 ## Solution 2
+<img width="3000" height="4000" alt="image" src="https://github.com/user-attachments/assets/dd15d9be-c0f8-4a57-8c42-8294e7bbcbbb" />
 
 <!-- This is an improved solution but might not be the final solution that you select. Give a brief description of this solution here. Again focus on its testing attributes. -->
 ### Specification-based Testing
