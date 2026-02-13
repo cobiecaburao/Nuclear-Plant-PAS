@@ -134,6 +134,8 @@ Nuclear Plant PAS need to be secure and reliable for the public to trust and pro
 - log class
 - systemHealth class
 
+Solution 1 did not provide sufficient testable attributes to support boundary value, decision table and state transition testing. The decision logic for alert triggering was directly rooted in the dashboard without separation of monitoring or any validation layers, and there was no defined equivalence classes for input validation and system states. That's why solution 1 was not selected for final design.
+
 ## Solution 2
 <img width="3000" height="4000" alt="image" src="https://github.com/user-attachments/assets/dd15d9be-c0f8-4a57-8c42-8294e7bbcbbb" />
 
