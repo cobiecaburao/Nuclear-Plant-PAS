@@ -126,10 +126,22 @@ Nuclear Plant PAS need to be secure and reliable for the public to trust and pro
 ## Solution 1
 
 <!-- Write a brief description of your first solution and provide the reasons in terms of testing for not selecting this one. -->
+- sensor class
+- operator class
+- supervisor class
+- alert class
+- log class
+- systemHealth class
 
 ## Solution 2
 
 <!-- This is an improved solution but might not be the final solution that you select. Give a brief description of this solution here. Again focus on its testing attributes. -->
+### Specification-based Testing
+- Boundary Value Aanalysis: temperature sensor, radiation sensor
+- Equivalence Class Test: 
+- Decision Table Test: 
+- State Transition Test: 
+- Use Case Test: 
 
 ## Final Solution
 
