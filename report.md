@@ -207,9 +207,9 @@ This component is triggered by the state management engine when a sensor reading
 | T7 | 320 | Warning | Margin-to-trip limit |
 | T8 | 321 | Critical | Reactor Trip (Safety System) |
 
-**3.Pressure Module - Boundary Value Analysis (BVA)**
-| --- | --- | --- | --- |
+**3. Pressure Module - Boundary Value Analysis (BVA)**
 | Case | Input(MPa) | Expected Result | Reason |
+| --- | --- | --- | --- |
 | P1 | 8.99 | Critical | Low Pressure Trip (LOCA concern | 
 | P2 | 9.49 | Warning| Just below Minimum operating pressure |
 | P3 | 9.50 | Normal| Minimum operating pressure | 
@@ -217,7 +217,7 @@ This component is triggered by the state management engine when a sensor reading
 | P5 | 11.06 | Warning | High pressure deviation |
 | P6 | 11.51 | Critical | High Pressure Trip (Overpressure) |
 
-**4.Radiation Module - Boundary Value Analysis (BVA)**
+**4. Radiation Module - Boundary Value Analysis (BVA)**
 | Case | Input(mSv) | Expected Result | Reason |
 | --- | --- | --- | --- |
 | R1 | 0.9 | Normal | Within public annaul limit | 
@@ -228,7 +228,7 @@ This component is triggered by the state management engine when a sensor reading
 | R6 | 100.0 | Critical | Emergency Action Level |
 | R7 | 1000.0 | Critical | Acute Health Effect Threshold |
 
-**5.Seismometer Module - Boundary Value Analysis (BVA)**
+**5. Seismometer Module - Boundary Value Analysis (BVA)**
 **Testing Method**: Discrete state testing based on Canadian Design Basis Earthquake (DBE) logic.
 | Class | Input Level | Expected Result | Reason |
 | --- | --- | --- | --- |
@@ -236,7 +236,7 @@ This component is triggered by the state management engine when a sensor reading
 | Warning | 1 | Warning| Event detected (Operating Basis) | 
 | Critical | 2 | Critical | DBE Exceeded (Safe Shutdown) |
 
-**6.Data Processing Unit (DPU): Decision Table**
+**6. Data Processing Unit (DPU): Decision Table**
 **Testing Method**: Decision Table Testing verifies that the highest severity wins logic is correctly implemented
 | Rule | Temperature State | Pressure State | Radiation State | Seismic State | DPU System Output |
 | --- | --- | --- | --- | --- | --- |
