@@ -237,7 +237,7 @@ This component is triggered by the state management engine when a sensor reading
 | Critical | 2 | Critical | DBE Exceeded (Safe Shutdown) |
 
 **6. Data Processing Unit (DPU): Decision Table**
-**Testing Method**: Decision Table Testing verifies that the highest severity wins logic is correctly implemented
+**Testing Method**: Decision Table Testing verifies that the "Highest Severity Wins" logic is correctly implemented
 | Rule | Temperature State | Pressure State | Radiation State | Seismic State | DPU System Output |
 | --- | --- | --- | --- | --- | --- |
 | D1 | Normal | Normal | Normal | Normal | Normal |   
@@ -249,7 +249,7 @@ This component is triggered by the state management engine when a sensor reading
 | D7 | Invalid | Any | Any | Any | System Error |
 
 **7. State Management Engine: Transistion Logic**
-**Testing Method**: State Transistion Testing will verify movement between the states and will ensure the Latch requirement.
+**Testing Method**: State Transistion Testing will verify movement between the states and will ensure the "Latch" requirement.
 | Current State | Condition (input Change) | Next State | Transistion Type |
 | --- | --- | --- | --- |
 | Normal | At least one warning | Warning | Automatic |   
@@ -342,10 +342,11 @@ Agenda: N/A
 - While keeping the limitations of your solution, provide recommendations for future design improvements. -->
 
 # References
-
-<!-- - Use the IEEE reference style.
-- Do not put any reference if it is not cited in the text. -->
-
+[1] W. J. Garland, Ed., The Essential CANDU: A Textbook on the CANDU Nuclear Power Plant Technology, University Network of Excellence in Nuclear Engineering (UNENE), 2014. [Online]. Available: unene.ca
+[2] NucEng, "Primary heat transport system chemistry control," CanTeach Library, Ref. 20032104, 2003. [Online]. Available: www.nuceng.ca
+[3] Canadian Nuclear Safety Commission, "REGDOC-2.5.2: Design of reactor facilities: Nuclear power plants," CNSC Regulatory Documents, 2023. [Online]. Available: www.cnsc-ccsn.gc.ca
+[4] NucEng, "Chapter 5: Safety systems," CANDU Safety Modules, Ref. EP714, 2009. [Online]. Available: www.nuceng.ca
+[5] NucEng, "CANDU 6 technical summary," Nuclear Engineering Database, 2005. [Online]. Available: www.nuceng.ca
 # Appendix
 
 <!-- If you want to provide an additional information, use this appendix. -->
