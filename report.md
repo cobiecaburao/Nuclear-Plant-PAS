@@ -342,11 +342,15 @@ Agenda: N/A
 - While keeping the limitations of your solution, provide recommendations for future design improvements. -->
 
 # References
--[1] W. J. Garland, Ed., The Essential CANDU: A Textbook on the CANDU Nuclear Power Plant Technology, University Network of Excellence in Nuclear Engineering (UNENE), 2014. [Online]. Available: unene.ca <br>
--[2] NucEng, "Primary heat transport system chemistry control," CanTeach Library, Ref. 20032104, 2003. [Online]. Available: www.nuceng.ca <br>
--[3] Canadian Nuclear Safety Commission, "REGDOC-2.5.2: Design of reactor facilities: Nuclear power plants," CNSC Regulatory Documents, 2023. [Online]. Available: www.cnsc-ccsn.gc.ca <br>
--[4] NucEng, "Chapter 5: Safety systems," CANDU Safety Modules, Ref. EP714, 2009. [Online]. Available: www.nuceng.ca <br>
--[5] NucEng, "CANDU 6 technical summary," Nuclear Engineering Database, 2005. [Online]. Available: www.nuceng.ca
+[1] W. J. Garland, Ed., The Essential CANDU: A Textbook on the CANDU Nuclear Power Plant Technology, University Network of Excellence in Nuclear Engineering (UNENE), 2014. [Online]. Available: unene.ca <br>
+<br>
+[2] NucEng, "Primary heat transport system chemistry control," CanTeach Library, Ref. 20032104, 2003. [Online]. Available: www.nuceng.ca <br>
+<br>
+[3] Canadian Nuclear Safety Commission, "REGDOC-2.5.2: Design of reactor facilities: Nuclear power plants," CNSC Regulatory Documents, 2023. [Online]. Available: www.cnsc-ccsn.gc.ca <br>
+<br>
+[4] NucEng, "Chapter 5: Safety systems," CANDU Safety Modules, Ref. EP714, 2009. [Online]. Available: www.nuceng.ca <br>
+<br>
+[5] NucEng, "CANDU 6 technical summary," Nuclear Engineering Database, 2005. [Online]. Available: www.nuceng.ca
 # Appendix
 
 <!-- If you want to provide an additional information, use this appendix. -->
