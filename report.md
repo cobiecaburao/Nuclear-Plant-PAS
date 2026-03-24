@@ -229,7 +229,7 @@ This component is triggered by the state management engine when a sensor reading
 | R7 | 1000.0 | Critical | Acute Health Effect Threshold |
 
 **5.Seismometer Module - Boundary Value Analysis (BVA)**
-- Discrete state testing based on Canadian Design Basis Earthquake (DBE) logic.
+**Testing Method**: Discrete state testing based on Canadian Design Basis Earthquake (DBE) logic.
 | Class | Input Level | Expected Result | Reason |
 | --- | --- | --- | --- |
 | Normal | 0 | Normal | Background noise / No event | 
@@ -237,7 +237,7 @@ This component is triggered by the state management engine when a sensor reading
 | Critical | 2 | Critical | DBE Exceeded (Safe Shutdown) |
 
 **6.Data Processing Unit (DPU): Decision Table**
-- **Testing Method**: Decision Table Testing verifies that the highest severity wins logic is correctly implemented
+**Testing Method**: Decision Table Testing verifies that the highest severity wins logic is correctly implemented
 | Rule | Temperature State | Pressure State | Radiation State | Seismic State | DPU System Output |
 | --- | --- | --- | --- | --- | --- |
 | D1 | Normal | Normal | Normal | Normal | Normal |   
@@ -249,7 +249,7 @@ This component is triggered by the state management engine when a sensor reading
 | D7 | Invalid | Any | Any | Any | System Error |
 
 **7. State Management Engine: Transistion Logic**
-- **Testing Method**: State Transistion Testing will verify movement between the states and will ensure the Latch requirement.
+**Testing Method**: State Transistion Testing will verify movement between the states and will ensure the Latch requirement.
 | Current State | Condition (input Change) | Next State | Transistion Type |
 | --- | --- | --- | --- |
 | Normal | At least one warning | Warning | Automatic |   
@@ -258,8 +258,8 @@ This component is triggered by the state management engine when a sensor reading
 | Critical | All return to normal | Critical | Latched (Needs Reset) | 
 | Critical | Manual Reset + All Normal | Normal | Manual Override |
 
-**8. Display INterface: Expected Output Table**
-- **Testing Method**: Functional testing of the Java UI to ensure synchronization with the DPU.
+**8. Display Interface: Expected Output Table**
+**Testing Method**: Functional testing of the Java UI to ensure synchronization with the DPU.
 | Input Condition | UI Component | Expected Result |
 | --- | --- | --- |
 | Valid Entry (e.g., 300 °C) | Value Field | Displays "300.0 °C"|   
