@@ -188,7 +188,7 @@ This component is triggered by the state management engine when a sensor reading
 
 <!-- What test suits did you design to test your prototype? How did you execute the test cases to test the prototype? -->
 **1. Master Input Module Thresholds**
-**| Module | Normal | Warning/Monitor | Critical/Emergency |**
+| Module | Normal | Warning/Monitor | Critical/Emergency |
 | --- | --- | --- | --- |
 | Temperature | 260-310 °C | 311-320 °C | > 320 °C | 
 | Pressure | 9.5-11.05 MPa | 9.09.49 / 11.06-11.50 MPa | <9.0/> 11.50 MPa | 
@@ -196,7 +196,7 @@ This component is triggered by the state management engine when a sensor reading
 | Seismic | No Event (0) | Event Detected (1) | DBE Exceeded (2) |
 
 **2. Temperature Module - Boundary Value Analysis (BVA)**
-**| Case | Input(°C) | Expected Result | Reason |**
+| Case | Input(°C) | Expected Result | Reason |
 | --- | --- | --- | --- |
 | T1 | 19 | Invalid | Below ambient/sensor floor | 
 | T2 | 264 | Invalid | Below minimum power heat | 
@@ -209,7 +209,7 @@ This component is triggered by the state management engine when a sensor reading
 
 **3.Pressure Module - Boundary Value Analysis (BVA)**
 | --- | --- | --- | --- |
-**| Case | Input(MPa) | Expected Result | Reason |**
+| Case | Input(MPa) | Expected Result | Reason |
 | P1 | 8.99 | Critical | Low Pressure Trip (LOCA concern | 
 | P2 | 9.49 | Warning| Just below Minimum operating pressure |
 | P3 | 9.50 | Normal| Minimum operating pressure | 
@@ -218,7 +218,7 @@ This component is triggered by the state management engine when a sensor reading
 | P6 | 11.51 | Critical | High Pressure Trip (Overpressure) |
 
 **4.Radiation Module - Boundary Value Analysis (BVA)**
-**| Case | Input(mSv) | Expected Result | Reason |**
+| Case | Input(mSv) | Expected Result | Reason |
 | --- | --- | --- | --- |
 | R1 | 0.9 | Normal | Within public annaul limit | 
 | R2 | 1.0 | Warning| Exceeds public limit (Class B) | 
@@ -230,7 +230,7 @@ This component is triggered by the state management engine when a sensor reading
 
 **5.Seismometer Module - Boundary Value Analysis (BVA)**
 - Discrete state testing based on Canadian Design Basis Earthquake (DBE) logic.
-**| Class | Input Level | Expected Result | Reason |**
+| Class | Input Level | Expected Result | Reason |
 | --- | --- | --- | --- |
 | Normal | 0 | Normal | Background noise / No event | 
 | Warning | 1 | Warning| Event detected (Operating Basis) | 
@@ -238,7 +238,7 @@ This component is triggered by the state management engine when a sensor reading
 
 **6.Data Processing Unit (DPU): Decision Table**
 - **Testing Method**: Decision Table Testing verifies that the highest severity wins logic is correctly implemented
-**| Rule | Temperature State | Pressure State | Radiation State | Seismic State | DPU System Output |**
+| Rule | Temperature State | Pressure State | Radiation State | Seismic State | DPU System Output |
 | --- | --- | --- | --- | --- | --- |
 | D1 | Normal | Normal | Normal | Normal | Normal |   
 | D2 | Warning | Normal| Normal | Normal | Warning |   
@@ -250,7 +250,7 @@ This component is triggered by the state management engine when a sensor reading
 
 **7. State Management Engine: Transistion Logic**
 - **Testing Method**: State Transistion Testing will verify movement between the states and will ensure the Latch requirement.
-**| Current State | Condition (input Change) | Next State | Transistion Type |**
+| Current State | Condition (input Change) | Next State | Transistion Type |
 | --- | --- | --- | --- |
 | Normal | At least one warning | Warning | Automatic |   
 | Warning | All return to normal | Normal | Automatic |   
@@ -260,7 +260,7 @@ This component is triggered by the state management engine when a sensor reading
 
 **8. Display INterface: Expected Output Table**
 - **Testing Method**: Functional testing of the Java UI to ensure synchronization with the DPU.
-**| Input Condition | UI Component | Expected Result |**
+| Input Condition | UI Component | Expected Result |
 | --- | --- | --- |
 | Valid Entry (e.g., 300 °C) | Value Field | Displays "300.0 °C"|   
 | Overall State: Normal | Status Label  | Text: "Normal" |   
@@ -269,7 +269,7 @@ This component is triggered by the state management engine when a sensor reading
 | invalid Entry (e.g., "ABC") | Error Message | Popup: "Invalid Numerica Input" | 
 
 **9. Alert Notification System: Decision Table**
-**| System State | User Override | Alert Output | UI Colour Code |**
+| System State | User Override | Alert Output | UI Colour Code |
 | --- | --- | --- | --- |
 | Normal | off | No Alert | Green |   
 | Warning | off | Warning Popup | Yellow |   
