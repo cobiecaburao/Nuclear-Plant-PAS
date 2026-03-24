@@ -187,6 +187,85 @@ This component is triggered by the state management engine when a sensor reading
 ### Test Cases and results
 
 <!-- What test suits did you design to test your prototype? How did you execute the test cases to test the prototype? -->
+**1. Master Input Module Thresholds**
+**| Module | Normal | Warning/Monitor | Critical/Emergency |**
+| Temperature | 260-310 °C | 311-320 °C | > 320 °C | 
+| Pressure | 9.5-11.05 MPa | 9.09.49 / 11.06-11.50 MPa | <9.0/> 11.50 MPa | 
+| Radiation | <1mSv | 1-99.9 mSv | >= 100 mSv |
+| Seismic | No Event (0) | Event Detected (1) | DBE Exceeded (2) |
+
+**2. Temperature Module - Boundary Value Analysis (BVA)**
+**| Case | Input(°C) | Expected Result | Reason |**
+| T1 | 19 | Invalid | Below ambient/sensor floor | 
+| T2 | 264 | Invalid | Below minimum power heat | 
+| T3 | 265 | Normal | Lower bound of operating window |
+| T4 | 288 | Normal | Mid range of operating window |
+| T5 | 310 | Normal | Upper bound of operating window |
+| T6 | 311 | Warning | Immediate high-temp alert |
+| T7 | 320 | Warning | Margin-to-trip limit |
+| T8 | 321 | Critical | Reactor Trip (Safety System) |
+
+**3.Pressure Module - Boundary Value Analysis (BVA)**
+**| Case | Input(MPa) | Expected Result | Reason |**
+| P1 | 8.99 | Critical | Low Pressure Trip (LOCA concern | 
+| P2 | 9.49 | Warning| Just below Minimum operating pressure |
+| P3 | 9.50 | Normal| Minimum operating pressure | 
+| P4 | 11.05 | Normal | Maximum operating pressure |
+| P5 | 11.06 | Warning | High pressure deviation |
+| P6 | 11.51 | Critical | High Pressure Trip (Overpressure) |
+
+**4.Radiation Module - Boundary Value Analysis (BVA)**
+**| Case | Input(mSv) | Expected Result | Reason |**
+| R1 | 0.9 | Normal | Within public annaul limit | 
+| R2 | 1.0 | Warning| Exceeds public limit (Class B) | 
+| R3 | 49.9 | Warning | Below NEW* limit |
+| R4 | 50.0 | Warning | Hits NEW* annual limit |
+| R5 | 99.9 | Warning | Margin to Emergency |
+| R6 | 100.0 | Critical | Emergency Action Level |
+| R7 | 1000.0 | Critical | Acute Health Effect Threshold |
+
+**5.Seismometer Module - Boundary Value Analysis (BVA)**
+- Discrete state testing based on Canadian Design Basis Earthquake (DBE) logic.
+**| Class | Input Level | Expected Result | Reason |**
+| Normal | 0 | Normal | Background noise / No event | 
+| Warning | 1 | Warning| Event detected (Operating Basis) | 
+| Critical | 2 | Critical | DBE Exceeded (Safe Shutdown) |
+
+**6.Data Processing Unit (DPU): Decision Table**
+- **Testing Method**: Decision Table Testing verifies that the highest severity wins logic is correctly implemented
+**| Rule | Temperature State | Pressure State | Radiation State | Seismic State | DPU System Output |**
+| D1 | Normal | Normal | Normal | Normal | Normal |   
+| D2 | Warning | Normal| Normal | Normal | Warning |   
+| D3 | Normal | Warning | Normal | Normal | Warning |  
+| D4 | Normal | Normal | Critical | Normal | Critical |  
+| D5 | Normal | Normal | Normal | Normal | Critical |  
+| D6 | Warning | Critical | Normal | Normal | Critical |  
+| D7 | Invalid | Any | Any | Any | System Error |
+
+**7. State Management Engine: Transistion Logic**
+- **Testing Method**: State Transistion Testing will verify movement between the states and will ensure the Latch requirement.
+**| Current State | Condition (input Change) | Next State | Transistion Type |**
+| Normal | At least one warning | Warning | Automatic |   
+| Warning | All return to normal | Normal | Automatic |   
+| Warning | At least one critical | Critical | Automatic(Emergency) | 
+| Critical | All return to normal | Critical | Latched (Needs Reset) | 
+| Critical | Manual Reset + All Normal | Normal | Manual Override |
+
+**8. Display INterface: Expected Output Table**
+- **Testing Method**: Functional testing of the Java UI to ensure synchronization with the DPU.
+**| Input Condition | UI Component | Expected Result |**
+| Valid Entry (e.g., 300 °C) | Value Field | Displays "300.0 °C"|   
+| Overall State: Normal | Status Label  | Text: "Normal" |   
+| Overall State: Warning | Status Label  | Text: "Warning" | 
+| Overall State: Critical | Status Label | Text: "Critical" | 
+| invalid Entry (e.g., "ABC") | Error Message | Popup: "Invalid Numerica Input" | 
+
+**9. Alert Notification System: Decision Table**
+**| System State | User Override | Alert Output | UI Colour Code |**
+| Normal | off | No Alert | Green |   
+| Warning | off | Warning Popup | Yellow |   
+| Critical | off | Critical Popup | Red | 
+| Any | on | Override Active | Blue / Purple | 
 
 ### Limitations
 
