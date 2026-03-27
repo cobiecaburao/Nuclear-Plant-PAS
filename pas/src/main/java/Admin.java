@@ -1,5 +1,3 @@
-package pas;
-
 public class Admin {
     private String name;
 
