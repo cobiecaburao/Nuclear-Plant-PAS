@@ -1,25 +1,25 @@
 package pas;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class AdminTest {
 
     private Admin admin;
     private PAS pas;
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        admin = new Admin("Bright");
+        admin = new Admin("John");
         pas = new PAS();
     }
 
     @Test
     public void constructor_setsAdminName() {
-        assertEquals("Bright", admin.getName());
+        assertEquals("John", admin.getName());
     }
 
     @Test
@@ -51,7 +51,6 @@ public class AdminTest {
     public void cancelAlert_deactivatesAlert() {
         admin.triggerManualAlert(pas);
         admin.cancelAlert(pas);
-
         assertFalse(pas.isAlertActive());
         assertEquals("NONE", pas.getAlertLevel());
     }
