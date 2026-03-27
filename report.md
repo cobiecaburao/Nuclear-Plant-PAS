@@ -282,17 +282,17 @@ There are a few important limitations to the Public ALert System(PAS) that are w
 
 One of the biggest limitations is that the system uses manually entered sensor values instead of real hardware input. This means things like sensor noise, communication delays, or hardware failures weren't really considered in the design, even though these would definitely come up in a real nuclear monitoring environment.
 
-The threshold values for temperature, pressure, radiation, and seismic activity were also kept preety basic. They were based on publicly available Canadian nuclear information and adjusted to make testing easier. In reality, nuclear power plants use much more complex safety limits that aren't publicly available, so the actual decision logic used in practice goes well beyond what was implemented here.
+The threshold values for temperature, pressure, radiation, and seismic activity were also kept pretty basic. They were based on publicly available Canadian nuclear information and adjusted to make testing easier. In reality, nuclear power plants use much more complex safety limits that aren't publicly available, so the actual decision logic used in practice goes well beyond what was implemented here.
 
-Another to note is that the system only looks at four environmental variables. Real nuclear monitoring systems track hundreds of parameters at once, such as, coolant flow, reactor power levels, and equipment health. So us limiting it to four definitely simplifies things, even if it makes testing more manageable. 
+Another thing to note is that the system only looks at four environmental variables. Real nuclear monitoring systems track hundreds of parameters at once such as, coolant flow, reactor power levels, equipment health, and etc. So us limiting it to four definitely simplifies things, even if it makes testing more manageable. 
 
 The seismic part of the system is also pretty simplified. Rather than using engineering measurements like peak ground acceleration, the system just uses a few discrete input levels to represent seismic activity. It's enough to show how the state transistions work, but it's not how seismic analysis would actually be done.
 
-The prototype also doesn't include any redundancy of rault-tolerance, whcih real safety-critical systems woudl definitely have. Normally, these systems use multiple independent sensors and voting logic to avoid logic false readings. So, this design solution just assumes all the inputs are correct.
+The prototype also doesn't include any redundancy of fault-tolerance, whcih real safety-critical systems would definitely have. Normally, these systems use multiple independent sensors and voting logic to avoid false readings. So, this design solution just assumes all the inputs are correct.
 
 Lastly, the system doesn't account for real-time performance issues like alert delays, network failures, or integration with external emergency systems, all of which would matter a lot in an actual deployment.
 
-Overall, even with all these limitions that we have, this solution still manages to demonstrate the core concepts, state based decision logic, sensor classification, and alert generation, which use inputs that are simplified but reasonable enough for the purposes of this project.
+Overall, despite all these limitions that we have, this solution successfully manages to demonstrate the core concepts of state based decision logic, sensor classification, and alert generation using inputs that are simplified but reasonable enough for the purposes of this project.
 
 # Team Work
 
