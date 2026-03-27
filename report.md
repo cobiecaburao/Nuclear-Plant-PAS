@@ -288,7 +288,7 @@ Another thing to note is that the system only looks at four environmental variab
 
 The seismic part of the system is also pretty simplified. Rather than using engineering measurements like peak ground acceleration, the system just uses a few discrete input levels to represent seismic activity. It's enough to show how the state transistions work, but it's not how seismic analysis would actually be done.
 
-The prototype also doesn't include any redundancy of fault-tolerance, which real safety-critical systems would definitely have. Normally, these systems use multiple independent sensors and voting logic to avoid false readings. So, this design solution just assumes all the inputs are correct.
+The prototype also doesn't include any redundancy or fault-tolerance, which real safety-critical systems would definitely have. Normally, these systems use multiple independent sensors and voting logic to avoid false readings. So, this design solution just assumes all the inputs are correct.
 
 Lastly, the system doesn't account for real-time performance issues like alert delays, network failures, or integration with external emergency systems, all of which would matter a lot in an actual deployment.
 
