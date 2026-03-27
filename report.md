@@ -342,7 +342,7 @@ Agenda: N/A
 - While keeping the limitations of your solution, provide recommendations for future design improvements. -->
 
 # References
-[1] W. J. Garland, Ed., The Essential CANDU: A Textbook on the CANDU Nuclear Power Plant Technology, University Network of Excellence in Nuclear Engineering (UNENE), 2014. [Online]. Available: [unene.ca](https://www.nuceng.ca/refer/candu-smr/2024-HowWhyCANDUandSMRs-Ballicatters.pdf) <br>
+[1] W. J. Garland, Ed., The Essential CANDU: A Textbook on the CANDU Nuclear Power Plant Technology, University Network of Excellence in Nuclear Engineering (UNENE), 2014. [Online]. Available:(https://www.nuceng.ca/refer/candu-smr/2024-HowWhyCANDUandSMRs-Ballicatters.pdf) <br>
 <br>
 [2] NucEng, "Primary heat transport system chemistry control," CanTeach Library, Ref. 20032104, 2003. [Online]. Available: www.nuceng.ca <br>
 <br>
