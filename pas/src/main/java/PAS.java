@@ -30,8 +30,6 @@ public class PAS implements PASSubject{
         }
     }
 
-    
-
     public void updateMessage(Message message) {
         if (sensor.getAlertCategories().contains("earthquake")) {
             this.message = new EarthquakeWarning(message, sensor.getAlertLevel());
