@@ -153,6 +153,29 @@ Solution 1 did not provide sufficient testable attributes to support boundary va
 
 <!-- This is the final solution. Explain why it is better than other solutions (focus more on testing). You may use a table for comparison purposes. After providing the reason for selecting this solution, detail it below. -->
 
+The final solution selected for this project is a modular Public Alert System (PAS) prototype consisting of four snesor input modules, a Data Processing Unit, a State Management Engine, a Display Interface, and an Alert Notification System. This solution was chosen because it provides a clear seperation between input handling, system logic,  state evaluation, and alert generation. Compared to the earlier design ideas, this version is easier to test because each component has a specific responsibility and can be validated independently.
+
+Solution 1 was not selected because the alert logic was directly tied to the dashboard with very little separation between components. This made it difficult to apply boundary value analysis, decision table testing, and state transition testing. there were also no clearly defined equivalence classes for sensor inputs or system states.
+
+Solution 2 imporved testing support by identifying boundary value analysis, equivalence class testing, decision tables, and state transistion testing. However, the architecture was still not fully modular, which made it harder to independently test each component and clearly define how inputs affected system states.
+
+The final solution improves this by separating the system into sensor modules, a data processing unit, a state management engine, and alert/display components. This structure makes it easier to apply boundary value analysis and equivalence class testing to the sensor modules, decision table testing to the processing logic, and state transition testing to the systen state behaviour.
+
+Overall, this final solution was selected because it is more structured, more modular, and easier to verify through systematic testing. This makes it a stronger design for the purposes of the project, especially since the focus is on validating software behaviour under different variable conditions and inputs.
+
+| Feature | Solution 1 | Solution 2 | Final Solution |
+| --- | --- | --- | --- |
+| Architecture | Dashboard-centered with loosely defined classes | Improved structure with testing ideas | Fully Modular PAS with clear components| 
+| Seperation of Components | Limited separation | Partial separation | Clear separation (sensors, processing, state, alerts) | 
+| Boundary Value Analysis | Not clearly supported | Identified but not fully structured | Fully supported in sensor modules |
+| Equivalence Class Testing | Not defined | Partially defined | Clearly defined inout ranges |
+| Decision Table Testing | Difficult to apply | Proposed but loosely connected | Applied to processing and alert logic |
+| State Transition Testing | No defined state model | Finite State Machine proposed | State Management Engine implemented |
+| Testability | Low | Moderate | High |
+| Input Validation | Not clearly handled | Mentioned but not fully structured | Implemented in sensor classification |
+| Modularity | Low | Medium | High |
+| Reason for Rejection/Selection | Hard to test | Better but not fully modular | Fully Best support for systematic testing |
+
 ### Components
 
 <!-- What components you used in the solution? What is the main purpose of using individual component? What testing method did you employ for each component? Provide a block diagram (with a numbered caption, such as Fig. 1) representing the connectivity and interaction between all the components. -->
@@ -300,51 +323,63 @@ Overall, despite all these limitions that we have, this solution successfully ma
 
 ## Meeting 1
 
-Time: Month Date, Year, hour: minutes am/pm to hour: minutes am/pm
+Time: January 21, 2026, 8:24pm to 10:07pm
 
 Agenda: Distribution of Project Tasks
 
 | Team Member | Previous Task | Completion State | Next Task |
 | --- | --- | --- | --- |
-| Team member 1 | N/A | N/A | Task 1 |
-| Team member 2 | N/A | N/A | Task 2 |
-| Team member 3 | N/A | N/A | Task 3 |
+| Cobie | N/A | N/A | Work on Problem Defintion section |
+| Bright | N/A | N/A | Work on Problem Defintion section |
+| Kamran | N/A | N/A | Work on Problem Defintion section |
 
 ## Meeting 2
 
-Time: Month Date, Year, hour: minutes am/pm to hour: minutes am/pm
+Time: January 27, 2026, 7:30pm to 9:00pm
 
-Agenda: Review of Individual Progress
+Agenda: Review of Individual Progress and Making of the Design constraints and Requirements
 
 | Team Member | Previous Task | Completion State | Next Task |
 | --- | --- | --- | --- |
-| Team member 1 | N/A | N/A | Task 1 |
-| Team member 2 | N/A | N/A | Task 2 |
-| Team member 3 | N/A | N/A | Task 3 |
+| Cobie | Problem Defintion section | Completed | Draft Design Constraints and Requirements |
+| Bright | Problem Defintion section | Completed | Draft Design Constraints and Requirements |
+| Kamran | Problem Defintion section | Completed | Draft Design Constraints and Requirements |
 
 ## Meeting 3
 
-Time: Month Date, Year, hour: minutes am/pm to hour: minutes am/pm
+Time: February 10, 2026, 3:15pm to 8:30pm
 
-Agenda: N/A
+Agenda: Iterative Engineering Design Process (Solution 1 and 2)
 
 | Team Member | Previous Task | Completion State | Next Task |
 | --- | --- | --- | --- |
-| Team member 1 | N/A | N/A | Task 1 |
-| Team member 2 | N/A | N/A | Task 2 |
-| Team member 3 | N/A | N/A | Task 3 |
+| Cobie | Draft Design Constraints and Requirements | Completed | Create Solution 2 |
+| Bright | Draft Design Constraints and Requirements | Completed | Create Solution 1 |
+| Kamran | Draft Design Constraints and Requirements | Completed | Update the report.md file |
 
 ## Meeting 4
 
-Time: Month Date, Year, hour: minutes am/pm to hour: minutes am/pm
+Time: March 23, 2026, 12:02pm to 6:57pm
 
-Agenda: N/A
+Agenda: Final Design (Solution 3), Implementation and Testing
 
 | Team Member | Previous Task | Completion State | Next Task |
 | --- | --- | --- | --- |
-| Team member 1 | N/A | N/A | Task 1 |
-| Team member 2 | N/A | N/A | Task 2 |
-| Team member 3 | N/A | N/A | Task 3 |
+| Cobie | Create Solution 2 | Completed | Find credible Canadian sources and update components section of the report.md file and help with the coding |
+| Bright | Create Solution 1 | Completed | Help with writing information and updating the report.md file and also help with the coding |
+| Kamran | Update the report.md file | Completed | Find credible Canadian data and make the BVA, Equivalence Class, and Decision tables based off of the data. Also help with the coding |
+
+## Meeting 5
+
+Time: March 27, 2026, 12:40pm to 10:56pm
+
+Agenda: Final Design (Solution 3), Implementation and Testing Continuation
+
+| Team Member | Previous Task | Completion State | Next Task |
+| --- | --- | --- | --- |
+| Cobie | Find credible Canadian sources and update components section of the report.md file and help with the coding | Completed | Make/Record Presentation and then finish the report |
+| Bright | Help with writing information and updating the report.md file and also help with the coding | Completed | Make/Record Presentation and then finish the report |
+| Kamran | Find credible Canadian data and make the BVA, Equivalence Class, and Decision tables based off of the data. Also help with the coding | Completed | Make/Record Presentation and then finish the report |
 
 # Project Management
 
