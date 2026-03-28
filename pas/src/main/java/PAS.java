@@ -16,7 +16,11 @@ public class PAS implements PASSubject{
     }
 
     public void registerObserver(PASObserver observer) {
-
+        for (PASObserver obs : pasObservers) {
+            if (obs.getPhoneNumber().equals(observer.getPhoneNumber())) {
+                return;
+            }
+        }
         pasObservers.add(observer);
     }
 
