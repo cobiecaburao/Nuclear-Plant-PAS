@@ -157,32 +157,32 @@ Solution 1 did not provide sufficient testable attributes to support boundary va
 
 <!-- What components you used in the solution? What is the main purpose of using individual component? What testing method did you employ for each component? Provide a block diagram (with a numbered caption, such as Fig. 1) representing the connectivity and interaction between all the components. -->
 Temperature Sensor Module
-This module accepts manually entered temperature readings and passes them to the data processing unit. Its purpose is to monitor thermal conditions and detect values that fall outside safe operating ranges. Boundary value analysis was applied by testing values at and around the defined temperature thresholds to verify correct system behaviour at the edges of each range. Equivalence class testing was used to confirm that values within the same class — normal, warning, and critical — produced consistent results throughout.
+This module recieves temperature readings and assigns an alert level to it. Its purpose is to monitor thermal conditions and detect values that fall outside safe operating ranges. Boundary value analysis was applied by testing values at and around the defined temperature thresholds to verify correct system behaviour at the edges of each range. Equivalence class testing was used to confirm that values within the same class — normal, warning, critical, and invalid — produced consistent results throughout.
 
 Pressure Sensor Module
-This module receives manually entered atmospheric or structural pressure readings. It is responsible for detecting pressure anomalies that may signal a hazardous condition. The same boundary value analysis and equivalence class testing approach was applied, with inputs selected from the boundaries and interiors of each pressure equivalence class to validate correct classification and processing.
+This module receives structural pressure readings. It is responsible for detecting pressure anomalies that may signal a hazardous condition. The same boundary value analysis and equivalence class testing approach was applied, with inputs selected from the boundaries and interiors of each pressure equivalence class to validate correct classification and processing.
 
 Radiation Sensor Module
-This module handles manually entered ionizing radiation level data. Given the safety-critical nature of radiation monitoring, accurate classification of input values is essential. Boundary value analysis was used to test values immediately below, at, and above radiation thresholds. Equivalence class testing confirmed that all values within a given class triggered the same system response.
+This module recieves radiation content in the air. Given the safety-critical nature of radiation monitoring, accurate classification of input values is essential. Boundary value analysis was used to test values immediately below, at, and above radiation thresholds. Equivalence class testing confirmed that all values within a given class triggered the same system response.
 
 Seismometer Module
-This module accepts manually entered ground motion or vibration intensity readings. Its role is to detect seismic activity and escalate the system state accordingly. Boundary value analysis and equivalence class testing were applied in the same manner as the other sensor modules, targeting the boundaries between seismic severity classes.
+This module detects occurrences of seismic activity and its magnitude. Its role is to detect seismic activity and shutdown processes. Boundary value analysis and equivalence class testing were applied in the same manner as the other sensor modules, targeting the boundaries between seismic severity classes.
 
-Data Processing Unit
-This is the central component of the system. It receives input from all four sensor modules, validates the data, and routes it to both the display interface and the state management engine. Decision table testing was applied to verify that combinations of simultaneous sensor inputs were handled correctly and routed to the appropriate downstream components without interference.
-
-State Management Engine
-This component evaluates incoming sensor readings against predefined thresholds and determines the overall system state. State transition testing was used to verify that the system correctly moved between states — such as Normal, Warning, and Critical — in response to sensor inputs, and that all valid and invalid transitions behaved as expected.
-
-Display Interface
-This component renders the current sensor readings and overall system state to the user through the Java application window. It was tested by verifying that the displayed values updated correctly after each manual input and that state changes were immediately and accurately reflected in the UI.
-
-Alert Notification System
-This component is triggered by the state management engine when a sensor reading exceeds a defined threshold. It produces an on-screen alert to notify the user of the hazardous condition. Decision table testing was used to confirm that the correct alert was generated for each combination of sensor states, and that no alerts were incorrectly raised or suppressed.
+Public Alert System (PAS)
+This system process the sensor data, forms alert messages, and sends it to list of observers (mobile notification, siren, etc.) within the emergency planning zone (EPZ). Equivalence class testing and decision table testing were applied to test conditional logic for processing sensor data to form alert messages and sending them out.
 
 ### Environmental, Societal, Safety, and Economic Considerations
 
 <!-- Explain how your engineering design took into account environmental, societal, economic and other constraints into consideration. It may include how your design has positive contributions to the environment and society? What type of economic decisions you made? How did you make sure that the design is reliable and safe to use? -->
+Environmental & Societal Constraints
+The primary societal contribution of a public alert system is public safety. We used the observer design pattern to ensure that multiple alert systems are synchronized instantly. There are a minority of people who do not have access to a mobile device so to ensure the alert is able to reach the people it needs to sirens, public service announcements, and digital signage are a necessity.
+The inclusion of specific warning categories such as earthquakes or radiation leaks allows for context-specific instructions. Rather than a generic alarm, actionable data is distributed, reducing panic and improving evacuation efficiency.
+Default test mode allows admins to test the functionality of the system without causing "noise polution" and "alarm fatigue."
+Economic Considerations
+The use of the observer design pattern makes scalability of the PAS simpler and less costly, and automates the alert distribution only notifying observers when an emergency situation occurs. This reduces unnecessary network traffic and server costs compared to a "polling" system where observers constantly request updates.
+Reliability and Safety
+Safety-critical systems require high fault tolerance. Our PAS handles this through clear logical separation, and has fail-safes in place to prevent sending "garbage" data. By default messages are wrapped in a Test Message when the system is not "Live" is a critical safety feature and prevents accidental mass-panic during maintenance. Incidents like the 2020 false alert from the pickering nuclear plant or the 2018 Hawaii missile alert showcases the necessity for these fail-safes to prevent user error during training and maintenance.
+
 
 ### Test Cases and results
 
