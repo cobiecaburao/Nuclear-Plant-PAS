@@ -298,24 +298,52 @@ Safety-critical systems require high fault tolerance. Our PAS handles this throu
 | Overall State: Critical | Status Label | Text: "Critical" | 
 | invalid Entry (e.g., "ABC") | Error Message | Popup: "Invalid Numerica Input" | 
 
-**9. Use Case Testing** <br>
+**9. Use Case Testing (1): Normal Monitoring** <br>
 | Main Success Scenario | Steps | Description |
 |----------------------|-------|-------------|
-| A: Actor (Operator) <br> S: System | 1 | A enters sensor values (temperature, pressure, radiation, seismic) |
+| A: Actor (Operator) <br> S: System | 1 | A: enters sensor values (temperature, pressure, radiation, seismic) |
 |  | 2 | S validates inputs |
-|  | 3 | S classifies each sensor reading |
-|  | 4 | S determines overall severity |
-|  | 5 | S displays "Normal" status |
-|  | 6 | S does not trigger alert |
+|  | 3 | S: classifies each sensor reading |
+|  | 4 | S: determines overall severity |
+|  | 5 | S: displays "Normal" status |
+|  | 6 | S: does not trigger alert |
 
 | Extensions | Steps | Description |
 |------------|-------|-------------|
 |  | 1a | Invalid input entered |
-|  | 1a.1 | S displays error message |
-|  | 1a.2 | S requests valid input |  
+|  | 1a.1 | S: displays error message |
+|  | 1a.2 | S: requests valid input |  
+
+**10. Use Case Testing (2): Warning Condition** <br>
+| Main Success Scenario | Steps | Description |
+|----------------------|-------|-------------|
+| A: Actor (Operator) <br> S: System | 1 | A: enters sensor values |
+|  | 2 | S: detects one warning-level input |
+|  | 3 | S: sets overall state to Warning |
+|  | 4 | S: updates display to "Warning" |
+|  | 5 | S: triggers warning notification |
+
+| Extensions | Steps | Description |
+|------------|-------|-------------|
+|  | 2a | Multiple warnings detected |
+|  | 2a.1 | S: still sets state to Warning | 
+
+**11. Use Case Testing (3): Critical Alert** <br>
+| Main Success Scenario | Steps | Description |
+|----------------------|-------|-------------|
+| A: Actor (Operator) <br> S: System | 1 | A: enters sensor values |
+|  | 2 | S: detects critical-level input |
+|  | 3 | S: sets overall state to Critical |
+|  | 4 | S: triggers emergency alert |
+|  | 5 | S: latches system in Critical |
+
+| Extensions | Steps | Description |
+|------------|-------|-------------|
+|  | 3a | Values return to normal |
+|  | 3a.1 | S: remains in Critical until reset | 
 
 
-**10. Equivalence Class Decision Table**
+**12. Equivalence Class Decision Table**
 | Case | Module | X1(Input Range) | Expected Output |
 | --- | --- | --- | --- |
 | 1 | Temperature | -∞ – 264 | INVALID |   
