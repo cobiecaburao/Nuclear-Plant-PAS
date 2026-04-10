@@ -240,7 +240,7 @@ Safety-critical systems require high fault tolerance. Our PAS handles this throu
 **3. Pressure Module - Boundary Value Analysis (BVA)**
 | Case | Input(MPa) | Expected Result | Reason |
 | --- | --- | --- | --- |
-| P1 | 8.99 | Critical | Low Pressure Trip (LOCA concern | 
+| P1 | 8.99 | Critical | Low Pressure Trip | 
 | P2 | 9.49 | Warning| Just below Minimum operating pressure |
 | P3 | 9.50 | Normal| Minimum operating pressure | 
 | P4 | 11.05 | Normal | Maximum operating pressure |
@@ -266,45 +266,6 @@ Safety-critical systems require high fault tolerance. Our PAS handles this throu
 | Warning | 1 | Warning| Event detected (Operating Basis) | 
 | Critical | 2 | Critical | DBE Exceeded (Safe Shutdown) |
 
-**6. Data Processing Unit (DPU): Decision Table**
-**Testing Method**: Decision Table Testing verifies that the "Highest Severity Wins" logic is correctly implemented
-| Rule | Temperature State | Pressure State | Radiation State | Seismic State | DPU System Output |
-| --- | --- | --- | --- | --- | --- |
-| D1 | Normal | Normal | Normal | Normal | Normal |   
-| D2 | Warning | Normal| Normal | Normal | Warning |   
-| D3 | Normal | Warning | Normal | Normal | Warning |  
-| D4 | Normal | Normal | Critical | Normal | Critical |  
-| D5 | Normal | Normal | Normal | Normal | Critical |  
-| D6 | Warning | Critical | Normal | Normal | Critical |  
-| D7 | Invalid | Any | Any | Any | System Error |
-
-**7. State Management Engine: Transistion Logic**
-**Testing Method**: State Transistion Testing will verify movement between the states and will ensure the "Latch" requirement.
-| Current State | Condition (input Change) | Next State | Transistion Type |
-| --- | --- | --- | --- |
-| Normal | At least one warning | Warning | Automatic |   
-| Warning | All return to normal | Normal | Automatic |   
-| Warning | At least one critical | Critical | Automatic(Emergency) | 
-| Critical | All return to normal | Critical | Latched (Needs Reset) | 
-| Critical | Manual Reset + All Normal | Normal | Manual Override |
-
-**8. Display Interface: Expected Output Table**
-**Testing Method**: Functional testing of the Java UI to ensure synchronization with the DPU.
-| Input Condition | UI Component | Expected Result |
-| --- | --- | --- |
-| Valid Entry (e.g., 300 °C) | Value Field | Displays "300.0 °C"|   
-| Overall State: Normal | Status Label  | Text: "Normal" |   
-| Overall State: Warning | Status Label  | Text: "Warning" | 
-| Overall State: Critical | Status Label | Text: "Critical" | 
-| invalid Entry (e.g., "ABC") | Error Message | Popup: "Invalid Numerica Input" | 
-
-**9. Alert Notification System: Decision Table**
-| System State | User Override | Alert Output | UI Colour Code |
-| --- | --- | --- | --- |
-| Normal | off | No Alert | Green |   
-| Warning | off | Warning Popup | Yellow |   
-| Critical | off | Critical Popup | Red | 
-| Any | on | Override Active | Blue / Purple | 
 
 ### Limitations
 
