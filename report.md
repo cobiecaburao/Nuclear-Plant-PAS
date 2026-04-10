@@ -266,6 +266,103 @@ Safety-critical systems require high fault tolerance. Our PAS handles this throu
 | Warning | 1 | Warning| Event detected (Operating Basis) | 
 | Critical | 2 | Critical | DBE Exceeded (Safe Shutdown) |
 
+**6. Data Processing Unit (DPU): Decision Table**
+**Testing Method**: Decision Table Testing verifies that the "Highest Severity Wins" logic is correctly implemented
+| Rule | Temperature State | Pressure State | Radiation State | Seismic State | DPU System Output |
+| --- | --- | --- | --- | --- | --- |
+| D1 | Normal | Normal | Normal | Normal | Normal |   
+| D2 | Warning | Normal| Normal | Normal | Warning |   
+| D3 | Normal | Warning | Normal | Normal | Warning |  
+| D4 | Normal | Normal | Critical | Normal | Critical |  
+| D5 | Normal | Normal | Normal | Normal | Critical |  
+| D6 | Warning | Critical | Normal | Normal | Critical |  
+| D7 | Invalid | Any | Any | Any | System Error |
+
+**7. State Management Engine: Transistion Logic**
+**Testing Method**: State Transistion Testing will verify movement between the states and will ensure the "Latch" requirement.
+| Current State | Condition (input Change) | Next State | Transistion Type |
+| --- | --- | --- | --- |
+| Normal | At least one warning | Warning | Automatic |   
+| Warning | All return to normal | Normal | Automatic |   
+| Warning | At least one critical | Critical | Automatic(Emergency) | 
+| Critical | All return to normal | Critical | Latched (Needs Reset) | 
+| Critical | Manual Reset + All Normal | Normal | Manual Override |
+
+**8. Display Interface: Expected Output Table**
+**Testing Method**: Functional testing of the Java UI to ensure synchronization with the DPU.
+| Input Condition | UI Component | Expected Result |
+| --- | --- | --- |
+| Valid Entry (e.g., 300 °C) | Value Field | Displays "300.0 °C"|   
+| Overall State: Normal | Status Label  | Text: "Normal" |   
+| Overall State: Warning | Status Label  | Text: "Warning" | 
+| Overall State: Critical | Status Label | Text: "Critical" | 
+| invalid Entry (e.g., "ABC") | Error Message | Popup: "Invalid Numerica Input" | 
+
+**9. Use Case Testing (1): Normal Monitoring** <br>
+| Main Success Scenario | Steps | Description |
+|----------------------|-------|-------------|
+| A: Actor (Operator) <br> S: System | 1 | A: enters sensor values (temperature, pressure, radiation, seismic) |
+|  | 2 | S validates inputs |
+|  | 3 | S: classifies each sensor reading |
+|  | 4 | S: determines overall severity |
+|  | 5 | S: displays "Normal" status |
+|  | 6 | S: does not trigger alert |
+
+| Extensions | Steps | Description |
+|------------|-------|-------------|
+|  | 1a | Invalid input entered |
+|  | 1a.1 | S: displays error message |
+|  | 1a.2 | S: requests valid input |  
+
+**10. Use Case Testing (2): Warning Condition** <br>
+| Main Success Scenario | Steps | Description |
+|----------------------|-------|-------------|
+| A: Actor (Operator) <br> S: System | 1 | A: enters sensor values |
+|  | 2 | S: detects one warning-level input |
+|  | 3 | S: sets overall state to Warning |
+|  | 4 | S: updates display to "Warning" |
+|  | 5 | S: triggers warning notification |
+
+| Extensions | Steps | Description |
+|------------|-------|-------------|
+|  | 2a | Multiple warnings detected |
+|  | 2a.1 | S: still sets state to Warning | 
+
+**11. Use Case Testing (3): Critical Alert** <br>
+| Main Success Scenario | Steps | Description |
+|----------------------|-------|-------------|
+| A: Actor (Operator) <br> S: System | 1 | A: enters sensor values |
+|  | 2 | S: detects critical-level input |
+|  | 3 | S: sets overall state to Critical |
+|  | 4 | S: triggers emergency alert |
+|  | 5 | S: latches system in Critical |
+
+| Extensions | Steps | Description |
+|------------|-------|-------------|
+|  | 3a | Values return to normal |
+|  | 3a.1 | S: remains in Critical until reset | 
+
+
+**12. Equivalence Class Decision Table**
+| Case | Module | X1(Input Range) | Expected Output |
+| --- | --- | --- | --- |
+| 1 | Temperature | -∞ – 264 | INVALID |   
+| 2 | Temperature | 265 - 310 | NORMAL |   
+| 3 | Temperature | 311 - 320 | WARNING | 
+| 4 | Temperature | 321 - ∞ | CRITICAL | 
+| 5 | Pressure | -∞ - 8.99 | CRITICAL |
+| 6 | Pressure | 9.00 – 9.49 | WARNING |
+| 7 | Pressure | 9.50 – 11.05 | NORMAL |
+| 8 | Pressure | 11.06 – 11.50 | WARNING |
+| 9 | Pressure | 11.51 – ∞ | CRITICAL |
+| 10 | Radiation | -∞ – -0.01 | INVALID |
+| 11 | Radiation | 0 – 0.99 | NORMAL |
+| 12 | Radiation | 1.00 – 99.9 | WARNING |
+| 13 | Radiation | 100 – ∞ | CRITICAL |
+| 14 | Seismometer | -∞ – -0.01 | INVALID |
+| 15 | Seismometer | 0 - 0.99 | NORMAL |
+| 16 | Seismometer | 1.00 - 1.99 | WARNING |
+| 17 | Seismometer | 2.00 – ∞ | CRITICAL |
 
 ### Limitations
 
