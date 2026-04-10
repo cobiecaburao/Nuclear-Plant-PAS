@@ -298,9 +298,9 @@ Safety-critical systems require high fault tolerance. Our PAS handles this throu
 | Overall State: Critical | Status Label | Text: "Critical" | 
 | invalid Entry (e.g., "ABC") | Error Message | Popup: "Invalid Numerica Input" | 
 
-**9. Use Case Testing**
-** Main Success Scenario **
-A: Actor (Operator)
+**9. Use Case Testing** <br>
+** Main Success Scenario ** <br>
+A: Actor (Operator) <br>
 S: System
 | Step | Description |
 | --- | --- |
@@ -311,7 +311,6 @@ S: System
 | 5 | S: displays "Normal" status |
 | 6 | S: does not trigger alert |
 | Extensions |
-| --- | --- |
 | 1a | Invalid input entered <br> S: displays error message <br> S: requests valid input |  
 
 
