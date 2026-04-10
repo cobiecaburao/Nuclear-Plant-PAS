@@ -5,19 +5,25 @@ public class SeismometerModuleTest {
 
     @Test
     public void testEarthquakeNormal() {
-        EarthquakeSensor sensor = new EarthquakeSensor(0);
+        EarthquakeSensor sensor = new EarthquakeSensor(0f);
         assertEquals("NORMAL", sensor.getAlertLevel());
     }
 
     @Test
-    public void testEarthquakeWarning() {
-        EarthquakeSensor sensor = new EarthquakeSensor(1);
+    public void testEarthquakeWarninMin() {
+        EarthquakeSensor sensor = new EarthquakeSensor(0.1f);
+        assertEquals("WARNING", sensor.getAlertLevel());
+    }
+
+    @Test
+    public void testEarthquakeWarningMax() {
+        EarthquakeSensor sensor = new EarthquakeSensor(6.9f);
         assertEquals("WARNING", sensor.getAlertLevel());
     }
 
     @Test
     public void testEarthquakeCritical() {
-        EarthquakeSensor sensor = new EarthquakeSensor(7);
+        EarthquakeSensor sensor = new EarthquakeSensor(7f);
         assertEquals("CRITICAL", sensor.getAlertLevel());
     }
 }
