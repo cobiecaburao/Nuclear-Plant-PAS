@@ -13,6 +13,6 @@ public class TemperatureWarning extends MessageDecorator {
 
     @Override
     public String getDescription() {
-        return message.getDescription() + "\nWarning: Temperature detected at dangerous levels\nStatus: " + this.alertLevel;
+        return message.getDescription() + "Temperature detected at dangerous levels\nStatus: " + this.alertLevel;
     }
 }

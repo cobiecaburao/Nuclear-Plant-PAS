@@ -13,6 +13,6 @@ public class PressureWarning extends MessageDecorator {
 
     @Override
     public String getDescription() {
-        return message.getDescription() + "\nWarning: Pressure detected at dangerous levels\nStatus: " + this.alertLevel;
+        return message.getDescription() + "Pressure detected at dangerous levels\nStatus: " + this.alertLevel;
     }
 }

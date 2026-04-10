@@ -13,6 +13,6 @@ public class RadiationWarning extends MessageDecorator {
 
     @Override
     public String getDescription() {
-        return message.getDescription() + "\nWarning: Radiation detected at dangerous levels\nStatus: " + this.alertLevel;
+        return message.getDescription() + "Radiation detected at dangerous levels\nStatus: " + this.alertLevel;
     }
 }

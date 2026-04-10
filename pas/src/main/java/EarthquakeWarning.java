@@ -13,6 +13,6 @@ public class EarthquakeWarning extends MessageDecorator {
 
     @Override
     public String getDescription() {
-        return message.getDescription() + "\nWarning: Earthquake detected\nStatus: " + this.alertLevel;
+        return message.getDescription() + "Earthquake detected\nStatus: " + this.alertLevel;
     }
 }

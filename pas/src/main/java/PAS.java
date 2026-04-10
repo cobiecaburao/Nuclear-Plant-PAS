@@ -115,4 +115,8 @@ public class PAS implements PASSubject {
     public void setSensor(Sensor sensor) {
         this.sensor = sensor;
     }
+
+    public Message getMessage() {
+        return this.message;
+    }
 }

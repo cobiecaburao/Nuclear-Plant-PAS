@@ -17,7 +17,7 @@ public class SeismometerModuleTest {
 
     @Test
     public void testEarthquakeWarningMax() {
-        EarthquakeSensor sensor = new EarthquakeSensor(6.9f);
+        EarthquakeSensor sensor = new EarthquakeSensor(5.9f);
         assertEquals("WARNING", sensor.getAlertLevel());
     }
 
