@@ -4,27 +4,27 @@
  */
 public class Civilian implements PASObserver {
     
-    int phoneNumber;
-    float distance;
+    String phoneNumber;
+    int distance;
 
-    public Civilian (int phoneNumber, float distance) {
+    public Civilian (String phoneNumber, int distance) {
         this.phoneNumber = phoneNumber;
         this.distance = distance;
     }
 
-    public void setDistance(float distance) {
+    public void setDistance(int distance) {
         this.distance = distance;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public float getDistance() {
+    public int getDistance() {
         return distance;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
     

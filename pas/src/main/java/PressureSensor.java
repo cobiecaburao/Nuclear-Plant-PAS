@@ -3,7 +3,7 @@
  *
  */
 public class PressureSensor extends Sensor {
-    public PressureSensor (float pressure) {
+    public PressureSensor (double pressure) {
         if (pressure < 9.0) {
             super.setAlertLevel("CRITICAL LOW");
             super.setAlertCategories("pressure");
