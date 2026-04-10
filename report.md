@@ -306,6 +306,27 @@ Safety-critical systems require high fault tolerance. Our PAS handles this throu
 | Critical | off | Critical Popup | Red | 
 | Any | on | Override Active | Blue / Purple | 
 
+**10. Equivalence Class Decision Table**
+| Case | Module | X1(Input Range) | Expected Output |
+| --- | --- | --- | --- |
+| 1 | Temperature | -∞ – 264 | INVALID |   
+| 2 | Temperature | 265 - 310 | NORMAL |   
+| 3 | Temperature | 311 - 320 | WARNING | 
+| 4 | Temperature | 321 - ∞ | CRITICAL | 
+| 5 | Pressure | -∞ - 8.99 | CRITICAL |
+| 6 | Pressure | 9.00 – 9.49 | WARNING |
+| 7 | Pressure | 9.50 – 11.05 | NORMAL |
+| 8 | Pressure | 11.06 – 11.50 | WARNING |
+| 9 | Pressure | 11.51 – ∞ | CRITICAL |
+| 10 | Radiation | -∞ – -0.01 | INVALID |
+| 11 | Radiation | 0 – 0.99 | NORMAL |
+| 12 | Radiation | 1.00 – 99.9 | WARNING |
+| 13 | Radiation | 100 – ∞ | CRITICAL |
+| 14 | Seismometer | -∞ – -0.01 | INVALID |
+| 15 | Seismometer | 0 - 0.99 | NORMAL |
+| 16 | Seismometer | 1.00 - 1.99 | WARNING |
+| 17 | Seismometer | 2.00 – ∞ | CRITICAL |
+
 ### Limitations
 
 There are a few important limitations to the Public ALert System(PAS) that are worth mentioning, mostly due to the fact that this is a simplified prototype rather than a fully operational system.
