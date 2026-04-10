@@ -299,19 +299,20 @@ Safety-critical systems require high fault tolerance. Our PAS handles this throu
 | invalid Entry (e.g., "ABC") | Error Message | Popup: "Invalid Numerica Input" | 
 
 **9. Use Case Testing** <br>
-** Main Success Scenario ** <br>
-A: Actor (Operator) <br>
-S: System
-| Step | Description |
-| --- | --- |
-| 1 | A: enters sensor values(temperature, pressure, radiation, seismic |  
-| 2 | S: validates inputs |  
-| 3 | S: classifies each sensor reading | 
-| 4 | S: determines overall severity |
-| 5 | S: displays "Normal" status |
-| 6 | S: does not trigger alert |
-| Extensions |
-| 1a | Invalid input entered <br> S: displays error message <br> S: requests valid input |  
+| Main Success Scenario | Steps | Description |
+|----------------------|-------|-------------|
+| A: Actor (Operator) <br> S: System | 1 | A enters sensor values (temperature, pressure, radiation, seismic) |
+|  | 2 | S validates inputs |
+|  | 3 | S classifies each sensor reading |
+|  | 4 | S determines overall severity |
+|  | 5 | S displays "Normal" status |
+|  | 6 | S does not trigger alert |
+
+| Extensions | Steps | Description |
+|------------|-------|-------------|
+|  | 1a | Invalid input entered |
+|  | 1a.1 | S displays error message |
+|  | 1a.2 | S requests valid input |  
 
 
 **10. Equivalence Class Decision Table**
