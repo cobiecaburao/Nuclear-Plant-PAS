@@ -298,13 +298,13 @@ Safety-critical systems require high fault tolerance. Our PAS handles this throu
 | Overall State: Critical | Status Label | Text: "Critical" | 
 | invalid Entry (e.g., "ABC") | Error Message | Popup: "Invalid Numerica Input" | 
 
-**9. Alert Notification System: Decision Table**
-| System State | User Override | Alert Output | UI Colour Code |
+**9. Use Case Testing**
+| Main Success Scenario <br>
+  A: Actor (Operator) <br>
+  S: System |
 | --- | --- | --- | --- |
-| Normal | off | No Alert | Green |   
-| Warning | off | Warning Popup | Yellow |   
-| Critical | off | Critical Popup | Red | 
-| Any | on | Override Active | Blue / Purple | 
+| Extensions |
+
 
 **10. Equivalence Class Decision Table**
 | Case | Module | X1(Input Range) | Expected Output |
