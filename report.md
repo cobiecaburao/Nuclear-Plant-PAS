@@ -194,6 +194,13 @@ This module detects occurrences of seismic activity and its magnitude. Its role 
 Public Alert System (PAS)
 This system process the sensor data, forms alert messages, and sends it to list of observers (mobile notification, siren, etc.) within the emergency planning zone (EPZ). Equivalence class testing and decision table testing were applied to test conditional logic for processing sensor data to form alert messages and sending them out.
 
+### Block Diagram
+
+![Block_Diagram](images/BlockDiagram.png)
+
+
+**Block diagram**: It illustrates how sensor modules will be providing input to the PAS and then processes the data, and generates outputs through the display interface.
+
 ### Environmental, Societal, Safety, and Economic Considerations
 
 <!-- Explain how your engineering design took into account environmental, societal, economic and other constraints into consideration. It may include how your design has positive contributions to the environment and society? What type of economic decisions you made? How did you make sure that the design is reliable and safe to use? -->
@@ -389,6 +396,23 @@ Agenda: Final Design (Solution 3), Implementation and Testing Continuation
 
 <!-- - A summary of what you achieved. Mention all the design functions and objectives that you achieved while satisfying testing requirements?
 - While keeping the limitations of your solution, provide recommendations for future design improvements. -->
+**Conclusion**
+<ul>
+  <li> Developed a modular Public Alert System (PAS) prototype for nuclear plant monitoring</li>
+  <li>Implemented sensor modules for temperature, pressure, radiation, and seismic activity</li>
+  <li>Applied boundary value analysis, equivalence class testing, decision tables, and state transition testing</li>
+  <li>Verified correct alert classification and system state behaviour</li>
+  <li>Met design objectives such as reducing human error and preventing false alarms</li>
+</ul><br>
+
+**Future Work** 
+<ul>
+  <li>Integrate real hardware sensors instead of manual input</li>
+  <li>Add redundancy and fault-tolerance for safety-critical operation</li>
+  <li>Expand monitoring to include more reactor parameters</li>
+  <li>Improve real-time communication and alert delivery</li>
+  <li>Implement advanced thresholds based on industry standards</li>
+</ul>
 
 # References
 [1] W. J. Garland, Ed., The Essential CANDU: A Textbook on the CANDU Nuclear Power Plant Technology, University Network of Excellence in Nuclear Engineering (UNENE), 2014. [Online]. Available:(https://www.nuceng.ca/refer/candu-smr/2024-HowWhyCANDUandSMRs-Ballicatters.pdf) <br>
