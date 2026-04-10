@@ -3,18 +3,20 @@
  *
  */
 public class TemperatureSensor extends Sensor {
-    public TemperatureSensor (float temperature) {
+    public TemperatureSensor(float temperature) {
+        addCategoryIfMissing("temperature");
+        updateReading(temperature);
+    }
+
+    public void updateReading(float temperature) {
         if (temperature < 265) {
-            super.setAlertLevel("LOW");
+            setAlertLevel("LOW");
         } else if (temperature >= 265 && temperature <= 310) {
-            super.setAlertLevel("NORMAL");
-            
+            setAlertLevel("NORMAL");
         } else if (temperature > 310 && temperature <= 320) {
-            super.setAlertLevel("WARNING");
-            super.setAlertCategories("temperature");
+            setAlertLevel("WARNING");
         } else {
-            super.setAlertLevel("CRITICAL");
-            super.setAlertCategories("temperature");
+            setAlertLevel("CRITICAL");
         }
     }
 }

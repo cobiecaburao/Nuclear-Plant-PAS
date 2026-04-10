@@ -17,12 +17,14 @@ public class PAS implements PASSubject {
     }
 
     public void registerObserver(PASObserver observer) {
-        for (PASObserver obs : pasObservers) {
-            if (obs.getPhoneNumber() == observer.getPhoneNumber()) {
-                return;
-            }
+        if (observer == null) return;
+        
+        // Using stream for duplicate check
+        boolean exists = pasObservers.stream().anyMatch(obs -> obs.getPhoneNumber().equals(observer.getPhoneNumber()));
+                
+        if (!exists) {
+            pasObservers.add(observer);
         }
-        pasObservers.add(observer);
     }
 
     public void removeObserver(PASObserver observer) {
@@ -35,29 +37,49 @@ public class PAS implements PASSubject {
         }
     }
 
-    public void updateMessage(Message message) {
-        // Check if sensor exists and has alert categories
-        if (sensor != null && sensor.getAlertCategories() != null) {
-            if (sensor.getAlertCategories().contains("earthquake")) {
-                this.message = message;
-            } else if (sensor.getAlertCategories().contains("pressure")) {
-                this.message = message;
-            } else if (sensor.getAlertCategories().contains("radiation")) {
-                this.message = message;
-            } else if (sensor.getAlertCategories().contains("temperature")) {
-                this.message = message;
-            } else {
-                this.message = message;
-            }
-        } else {
-            this.message = message;
+    public void updateMessage(Message newMessage) {
+        if (sensor == null || sensor.getAlertCategories() == null || newMessage == null) {
+            return; 
+        }
+
+        String level = sensor.getAlertLevel();
+        if (level != null) {
+            this.alertActive = level.equals("WARNING") || level.contains("CRITICAL");
+        }
+
+        Message decoratedMessage = newMessage;
+
+        if (sensor.getAlertCategories().contains("earthquake")) {
+
+            decoratedMessage = new EarthquakeWarning(decoratedMessage, sensor.getAlertLevel());
+
         }
         
-        if (!alertActive && this.message != null) {
-            // If you have TestMessage class, uncomment the next line
-            // this.message = new TestMessage(this.message);
+        if (sensor.getAlertCategories().contains("pressure")) {
+
+            decoratedMessage = new PressureWarning(decoratedMessage, sensor.getAlertLevel());
+
         }
+        
+        if (sensor.getAlertCategories().contains("radiation")) {
+
+        decoratedMessage = new RadiationWarning(decoratedMessage, sensor.getAlertLevel());
+
+        }
+        
+        if (sensor.getAlertCategories().contains("temperature")) {
+
+            decoratedMessage = new TemperatureWarning(decoratedMessage, sensor.getAlertLevel());
+
+        }
+
+        if (!alertActive) {
+            decoratedMessage = new TestMessage(decoratedMessage);
+        }
+
+        this.message = decoratedMessage;
         notifyObservers();
+        
     }
     
     // Getters and Setters for Admin class
@@ -87,6 +109,7 @@ public class PAS implements PASSubject {
     
     public Sensor getSensor() {
         return sensor;
+        
     }
     
     public void setSensor(Sensor sensor) {

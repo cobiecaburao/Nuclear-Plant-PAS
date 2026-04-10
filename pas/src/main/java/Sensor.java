@@ -5,15 +5,17 @@
 import java.util.ArrayList;
 
 public abstract class Sensor {
-    private String alertLevel;
+    private String alertLevel = "NONE";
     private ArrayList<String> alertCategories = new ArrayList<>();
 
     public void setAlertLevel(String alertLevel) {
         this.alertLevel = alertLevel;
     }
 
-    public void setAlertCategories(String alertCategory) {
-        this.alertCategories.add(alertCategory);
+    public void addCategoryIfMissing(String category) {
+        if (!this.alertCategories.contains(category)) {
+            this.alertCategories.add(category);
+        }
     }
 
     public String getAlertLevel() {

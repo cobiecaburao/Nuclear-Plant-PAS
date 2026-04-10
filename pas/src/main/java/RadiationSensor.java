@@ -3,19 +3,20 @@
  *
  */
 public class RadiationSensor extends Sensor {
-    public RadiationSensor (float radiation) {
-        if (radiation < 0) {
-            super.setAlertLevel("INVALID");
-        } else if (radiation < 1.0) {
-            super.setAlertLevel("NORMAL");
-        } else if (radiation < 100) {
-            super.setAlertLevel("WARNING");
-            super.setAlertCategories("radiation");
-        } else {
-            super.setAlertLevel("CRITICAL");
-            super.setAlertCategories("radiation");
-        }
+    public RadiationSensor(float radiation) {
+        addCategoryIfMissing("radiation");
+        updateReading(radiation);
     }
 
-
+    public void updateReading(float radiation) {
+        if (radiation < 0) {
+            setAlertLevel("INVALID");
+        } else if (radiation < 1.0) {
+            setAlertLevel("NORMAL");
+        } else if (radiation < 100) {
+            setAlertLevel("WARNING");
+        } else {
+            setAlertLevel("CRITICAL");
+        }
+    }
 }
