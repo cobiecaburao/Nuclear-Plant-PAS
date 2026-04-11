@@ -364,6 +364,88 @@ Safety-critical systems require high fault tolerance. Our PAS handles this throu
 | 16 | Seismometer | 1.00 - 1.99 | WARNING |
 | 17 | Seismometer | 2.00 – ∞ | CRITICAL |
 
+
+**13. Boundary Value Analysis (BVA) - Pressure Sensor in PAS**
+
+| Test Case ID | Boundary Point | Input Value | Expected Alert Level | Resulting State |
+| :--- | :--- | :--- | :--- | :--- |
+| BVA_01 | Lower Critical Exit | 8.99 | `CRITICAL LOW` | **Active** |
+| BVA_02 | Warning Entry | 9.00 | `WARNING` | **Active** |
+| BVA_03 | Warning Internal | 9.01 | `WARNING` | **Active** |
+| BVA_04 | Warning Exit | 9.49 | `WARNING` | **Active** |
+| BVA_05 | Normal Entry | 9.50 | `NORMAL` | **Idle (Test)** |
+| BVA_06 | Normal Exit | 11.05 | `NORMAL` | **Idle (Test)** |
+| BVA_07 | Warning Upper Entry | 11.06 | `WARNING` | **Active** |
+| BVA_08 | Warning Upper Exit | 11.50 | `WARNING` | **Active** |
+| BVA_09 | High Critical Entry | 11.51 | `CRITICAL HIGH` | **Active** |
+
+---
+
+**14. Robust Equivalence Class Testing (ECT)**
+ECT divides inputs into groups handled by the same logic branches. "Robust" testing includes invalid/extreme values.
+
+| Partition Class | Input Value | Expected Level | Description |
+| :--- | :--- | :--- | :--- |
+| **Valid: Critical Low** | 5.0 | `CRITICAL LOW` | Pressure below safe threshold. |
+| **Valid: Warning** | 9.25 | `WARNING` | Lower pressure transition zone. |
+| **Valid: Normal** | 10.0 | `NORMAL` | Pressure within safe operating specs. |
+| **Valid: Critical High** | 15.0 | `CRITICAL HIGH` | Pressure exceeding safety limits. |
+| **Robust: Negative** | -10.0 | `CRITICAL LOW` | Values below zero (logic: x < 9.0). |
+| **Robust: Invalid** | `Double.NaN` | `INVALID` | Non-numerical sensor data. |
+
+---
+
+**15. Decision Table Testing - PAS Decoration Logic**
+Determines how the `PAS` selects decorators based on the reporting sensor's data.
+
+| Condition | Rule 1 | Rule 2 | Rule 3 | Rule 4 |
+| :--- | :--- | :--- | :--- | :--- |
+| **Category == "earthquake"** | Yes | No | No | No |
+| **Category == "pressure"** | No | Yes | No | No |
+| **Level == "WARNING" / "CRITICAL"** | Yes | Yes | No | Yes (Other) |
+| **Action: Apply Sensor Decorator** | Earthquake | Pressure | None | Radiation/Temp |
+| **Action: Apply TestMessage** | No | No | Yes | No |
+| **Action: Set alertActive** | **True** | **True** | **False** | **True** |
+
+---
+
+**16. State Transition Testing**
+Tracks the state of the system as it moves between an Idle (Test) mode and an Active (Emergency) mode.
+
+| Current State | Event (Sensor Input) | Triggered Level | Next State | Message Decoration |
+| :--- | :--- | :--- | :--- | :--- |
+| **S1: Initialized** | None | `NONE` | **S1: Idle** | None |
+| **S1: Idle** | Magnitude: 7.0 | `CRITICAL` | **S2: Active** | EarthquakeWarning |
+| **S2: Active** | Magnitude: 0.0 | `NORMAL` | **S1: Idle** | TestMessage |
+| **S1: Idle** | Pressure: 9.20 | `WARNING` | **S2: Active** | PressureWarning |
+| **S2: Active** | Pressure: NaN | `INVALID` | **S1: Idle** | TestMessage |
+
+---
+
+## 17. Use Case Testing
+Tests the end-to-end flow from sensor detection to observer notification.
+
+### Use Case: Critical Earthquake Alert
+1. **Actor**: Earthquake Sensor.
+2. **Pre-condition**: PAS is active; Resident (Observer) is registered.
+3. **Flow**: 
+    * Sensor detects magnitude **7.2**.
+    * Sensor level is set to `CRITICAL`.
+    * `PAS` receives sensor and updates message.
+    * `PAS` identifies category as `earthquake`.
+    * `PAS` wraps message in `EarthquakeWarning`.
+4. **Post-condition**: Resident receives: `[CRITICAL EARTHQUAKE WARNING] Seismic Event`.
+
+### Use Case: Routine Status Check (Normal)
+1. **Actor**: Temperature Sensor.
+2. **Pre-condition**: System is idle.
+3. **Flow**:
+    * Sensor detects **280.0K**.
+    * Sensor level is set to `NORMAL`.
+    * `PAS` recognizes `alertActive = false`.
+    * `PAS` wraps message in `TestMessage`.
+4. **Post-condition**: System remains in Idle state; Message is marked `[TEST MESSAGE]`.
+
 ### Limitations
 
 There are a few important limitations to the Public ALert System(PAS) that are worth mentioning, mostly due to the fact that this is a simplified prototype rather than a fully operational system.
