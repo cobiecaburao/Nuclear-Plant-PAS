@@ -449,6 +449,7 @@ Agenda: Final Design (Solution 3), Implementation and Testing Continuation
 # Project Management
 
 <!-- Provide a Gantt chart showing the progress of your work here. Mention all the tasks along with their predecessors. Provide the slack time of each task and identify the critical path. -->
+![Gantt_Chart](images/Gantt-Chart.png)
 
 # Conclusion and Future Work
 

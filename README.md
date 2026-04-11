@@ -11,3 +11,6 @@ accidental or false alerts. The system allows authorized personnel to conduct tr
 real public notifications, while live alerts go through a layered verification process. The codebase includes 
 modules for alert management, verif cation logic, logging, and audit tracking, making it suitable for both 
 operational use and operator training scenarios.
+
+Presentation Recording
+https://youtu.be/VAZ8wE3Zzek
